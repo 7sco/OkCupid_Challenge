@@ -71,7 +71,7 @@ public class Match {
     private int lastLogin;
     @Expose
     @SerializedName("relative")
-    private int relative;
+    private long relative;
     @Expose
     @SerializedName("enemy")
     private int enemy;
@@ -160,7 +160,7 @@ public class Match {
         return lastLogin;
     }
 
-    public int getRelative() {
+    public long getRelative() {
         return relative;
     }
 
