@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Search</string>
+    <string name="username">Username</string>
+    <string name="age_location">Age-Location</string>
+</resources>
