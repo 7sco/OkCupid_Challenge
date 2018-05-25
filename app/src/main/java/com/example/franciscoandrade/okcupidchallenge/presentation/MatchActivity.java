@@ -25,7 +25,7 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
     @BindView(R.id.match_rv)
     RecyclerView matchRv;
     private MatchListAdapter adapter = new MatchListAdapter();
-    private ArrayList<Match> tempList;
+    private ArrayList<Match> savedMatchList;
 
 
     @Override
@@ -37,8 +37,8 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
         MatchContract.Presenter presenter = new MatchPresenter(this, clientService);
 
         if(savedInstanceState!=null){
-            tempList=(ArrayList<Match>) savedInstanceState.getSerializable("listBeforeRotation");
-            adapter.addMatches(tempList);
+            savedMatchList=(ArrayList<Match>) savedInstanceState.getSerializable("listBeforeRotation");
+            adapter.addMatches(savedMatchList);
             matchRv.setAdapter(adapter);
         }
         else {
@@ -51,14 +51,14 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("listBeforeRotation",  tempList);
+        outState.putSerializable("listBeforeRotation",  savedMatchList);
         super.onSaveInstanceState(outState);
     }
     @Override
     public void setRecyclerView(List<Match> matchList) {
         adapter.addMatches(matchList);
-        tempList= new ArrayList<>();
-        tempList.addAll(matchList);
+        savedMatchList= new ArrayList<>();
+        savedMatchList.addAll(matchList);
         matchRv.setAdapter(adapter);
     }
 

@@ -48,14 +48,14 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Matc
 
     public class MatchListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.match_image)
-        ImageView match_image;
+        ImageView matchImage;
         @BindView(R.id.match_username)
-        TextView match_username;
+        TextView matchUsername;
         @BindView(R.id.match_age_location)
-        TextView match_age_location;
+        TextView ageLAndLocation;
         @BindView(R.id.match_percentage)
-        TextView match_percentage;
-        int position;
+        TextView matchPercentage;
+        private int position;
 
         public MatchListViewHolder(View itemView) {
             super(itemView);
@@ -68,19 +68,20 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Matc
             Match match= listMatch.get(position);
             this.position=position;
             String imageUrl = match.getPhoto().getThumbPaths().getLarge();
-            String percentage = getPercentage(match.getMatch()) + " " + itemView.getResources().getString(R.string.percentage_itemView);
-            String location = match.getCityName() + ", " + match.getStateCode();
-            int age = match.getAge();
-            String ageLocation = age + " \u2022 " + location;
+            String percentageResult = getPercentage(match.getMatch()) + " " + itemView.getResources().getString(R.string.percentage_itemView);
+            String matchLocation = match.getCityName() + ", " + match.getStateCode();
+            int matchAge = match.getAge();
+            String ageWithLocation = matchAge + " \u2022 " + matchLocation;
 
             Picasso.get().load(imageUrl).
                     fit().
                     centerCrop().
-                    //error(R.mipmap.).
-                    into(match_image);
-            match_percentage.setText(percentage);
-            match_age_location.setText(ageLocation);
-            match_username.setText(match.getUsername());
+                    placeholder(R.drawable.ic_loading).
+                    error(R.drawable.error_image).
+                    into(matchImage);
+            matchPercentage.setText(percentageResult);
+            ageLAndLocation.setText(ageWithLocation);
+            matchUsername.setText(match.getUsername());
 
             if (match.getLiked()) {
                 itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.liked_color));
@@ -94,6 +95,7 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Matc
             if (! listMatch.get(position).getLiked()){
                 itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.liked_color));
                 listMatch.get(position).setLiked(true);
+
             }
             else {
                 itemView.setBackgroundColor(Color.WHITE);

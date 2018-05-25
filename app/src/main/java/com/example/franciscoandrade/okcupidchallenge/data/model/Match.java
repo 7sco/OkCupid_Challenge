@@ -11,25 +11,13 @@ public class Match implements Serializable{
     @SerializedName("city_name")
     private String cityName;
     @Expose
-    @SerializedName("username")
-    private String username;
-    @Expose
-    @SerializedName("age")
-    private int age;
-    @Expose
-    @SerializedName("photo")
-    private Photo photo;
-    @Expose
-    @SerializedName("orientation")
-    private int orientation;
-    @Expose
     @SerializedName("state_code")
     private String stateCode;
-    @Expose
-    @SerializedName("liked")
+    private String username;
+    private int age;
+    private Photo photo;
+    private int orientation;
     private boolean liked;
-    @Expose
-    @SerializedName("match")
     private int match;
 
     public String getCityName() {

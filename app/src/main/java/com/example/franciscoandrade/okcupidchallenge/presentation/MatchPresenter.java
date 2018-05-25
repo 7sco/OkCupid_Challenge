@@ -41,5 +41,4 @@ public class MatchPresenter implements MatchContract.Presenter {
             }
         });
     }
-
 }
