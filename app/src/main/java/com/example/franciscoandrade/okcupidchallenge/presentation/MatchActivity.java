@@ -24,7 +24,7 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
 
     @BindView(R.id.match_rv)
     RecyclerView matchRv;
-    MatchListAdapter adapter = new MatchListAdapter();
+    private MatchListAdapter adapter = new MatchListAdapter();
     private ArrayList<Match> tempList;
 
 
@@ -34,7 +34,7 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
         setContentView(R.layout.activity_match);
         ButterKnife.bind(this);
         ClientService clientService = new ClientService(getString(R.string.WW_Domain));
-        MatchContract.Presenter presenter = new MatchPresenter(this, clientService, getResources());
+        MatchContract.Presenter presenter = new MatchPresenter(this, clientService);
 
         if(savedInstanceState!=null){
             tempList=(ArrayList<Match>) savedInstanceState.getSerializable("listBeforeRotation");
@@ -63,7 +63,8 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
     }
 
     @Override
-    public void showMessage(String message) {
+    public void showMessage() {
+        String message=this.getString(R.string.error_no_internet);
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 

@@ -18,15 +18,11 @@ public class MatchPresenter implements MatchContract.Presenter {
     private static final String TAG= MatchPresenter.class.getSimpleName();
     private MatchContract.View viemImpl;
     private ClientService clientService;
-    private Resources resources;
-
 
     public MatchPresenter(@NonNull MatchContract.View viemImpl,
-                          @NonNull ClientService clientService,
-                          @NonNull Resources resources) {
+                          @NonNull ClientService clientService) {
         this.viemImpl = viemImpl;
         this.clientService = clientService;
-        this.resources = resources;
     }
 
     @Override
@@ -41,11 +37,9 @@ public class MatchPresenter implements MatchContract.Presenter {
 
             @Override
             public void onFailure(Call<MatchResponse> call, Throwable t) {
-                viemImpl.showMessage(resources.getString(R.string.error_no_internet));
+                viemImpl.showMessage();
             }
         });
     }
-
-
 
 }
