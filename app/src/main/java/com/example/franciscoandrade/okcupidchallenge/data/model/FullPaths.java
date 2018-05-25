@@ -3,7 +3,9 @@ package com.example.franciscoandrade.okcupidchallenge.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class FullPaths {
+import java.io.Serializable;
+
+public class FullPaths  implements Serializable{
     @Expose
     @SerializedName("original")
     private String original;

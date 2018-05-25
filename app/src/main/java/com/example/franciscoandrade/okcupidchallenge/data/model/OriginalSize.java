@@ -3,7 +3,9 @@ package com.example.franciscoandrade.okcupidchallenge.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class OriginalSize {
+import java.io.Serializable;
+
+public class OriginalSize implements Serializable{
     @Expose
     @SerializedName("height")
     private int height;

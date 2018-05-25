@@ -4,4 +4,5 @@
     <string name="age_location">Age-Location</string>
     <string name="match_percentage">Match Percentage %</string>
     <string name="percentage_itemView">"% Match"</string>
+    <string name="error_no_internet">Unable to get Matches. Please try again later.</string>
 </resources>

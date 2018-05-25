@@ -3,7 +3,9 @@ package com.example.franciscoandrade.okcupidchallenge.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CropRect {
+import java.io.Serializable;
+
+public class CropRect implements Serializable{
     @Expose
     @SerializedName("x")
     private int x;

@@ -3,6 +3,6 @@
     <color name="colorPrimary">#4B7AD8</color>
     <color name="colorPrimaryDark">#315FC6</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="age_location_color">#C3C6CD</color>
-    <color name="liked_color">#FFD180</color>
+    <color name="age_location_color">#afb1b6</color>
+    <color name="liked_color">#FFFFA8</color>
 </resources>
