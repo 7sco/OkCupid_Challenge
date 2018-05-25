@@ -63,9 +63,11 @@ public class MatchListViewHolder extends RecyclerView.ViewHolder implements View
 
         if (!likeState){
             itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.liked_color));
+            likeState=true;
         }
         else {
             itemView.setBackgroundColor(Color.WHITE);
+            likeState=false;
         }
     }
 
