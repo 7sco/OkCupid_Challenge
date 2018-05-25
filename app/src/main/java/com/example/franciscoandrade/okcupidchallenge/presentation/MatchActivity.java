@@ -24,8 +24,8 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
 
     @BindView(R.id.match_rv)
     RecyclerView matchRv;
-    MatchListAdapter adapter = new MatchListAdapter();
-    private ArrayList<Match> tempList;
+    private MatchListAdapter adapter = new MatchListAdapter();
+    private ArrayList<Match> savedMatchList;
 
 
     @Override
@@ -34,11 +34,11 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
         setContentView(R.layout.activity_match);
         ButterKnife.bind(this);
         ClientService clientService = new ClientService(getString(R.string.WW_Domain));
-        MatchContract.Presenter presenter = new MatchPresenter(this, clientService, getResources());
+        MatchContract.Presenter presenter = new MatchPresenter(this, clientService);
 
         if(savedInstanceState!=null){
-            tempList=(ArrayList<Match>) savedInstanceState.getSerializable("listBeforeRotation");
-            adapter.addMatches(tempList);
+            savedMatchList=(ArrayList<Match>) savedInstanceState.getSerializable("listBeforeRotation");
+            adapter.addMatches(savedMatchList);
             matchRv.setAdapter(adapter);
         }
         else {
@@ -51,19 +51,20 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("listBeforeRotation",  tempList);
+        outState.putSerializable("listBeforeRotation",  savedMatchList);
         super.onSaveInstanceState(outState);
     }
     @Override
     public void setRecyclerView(List<Match> matchList) {
         adapter.addMatches(matchList);
-        tempList= new ArrayList<>();
-        tempList.addAll(matchList);
+        savedMatchList= new ArrayList<>();
+        savedMatchList.addAll(matchList);
         matchRv.setAdapter(adapter);
     }
 
     @Override
-    public void showMessage(String message) {
+    public void showMessage() {
+        String message=this.getString(R.string.error_no_internet);
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 

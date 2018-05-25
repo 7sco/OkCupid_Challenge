@@ -9,8 +9,6 @@ public class Photo implements Serializable{
     @Expose
     @SerializedName("thumb_paths")
     private ThumbPaths thumbPaths;
-    @Expose
-    @SerializedName("id")
     private String id;
 
     public ThumbPaths getThumbPaths() {
