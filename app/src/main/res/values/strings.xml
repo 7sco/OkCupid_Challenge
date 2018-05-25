@@ -2,4 +2,6 @@
     <string name="app_name">Search</string>
     <string name="username">Username</string>
     <string name="age_location">Age-Location</string>
+    <string name="match_percentage">Match Percentage %</string>
+    <string name="percentage_itemView">"% Match"</string>
 </resources>

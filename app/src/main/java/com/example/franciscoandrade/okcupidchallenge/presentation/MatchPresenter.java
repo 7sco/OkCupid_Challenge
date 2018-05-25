@@ -36,6 +36,7 @@ public class MatchPresenter implements MatchContract.Presenter {
             @Override
             public void onResponse(Call<MatchResponse> call, Response<MatchResponse> response) {
                 Log.d(TAG, "onResponse: "+response);
+                viemImpl.setRecyclerView(response.body().getData());
             }
 
             @Override
