@@ -8,7 +8,7 @@ public interface MatchContract {
 
     interface View{
         void setRecyclerView(List<Match> matchList);
-
+        void showMessage(String message);
     }
 
     interface Presenter{

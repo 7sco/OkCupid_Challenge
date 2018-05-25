@@ -3,7 +3,9 @@ package com.example.franciscoandrade.okcupidchallenge.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ThumbPaths {
+import java.io.Serializable;
+
+public class ThumbPaths implements Serializable{
     @Expose
     @SerializedName("medium")
     private String medium;

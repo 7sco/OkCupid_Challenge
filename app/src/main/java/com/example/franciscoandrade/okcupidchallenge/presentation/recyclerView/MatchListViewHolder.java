@@ -1,5 +1,6 @@
 package com.example.franciscoandrade.okcupidchallenge.presentation.recyclerView;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MatchListViewHolder extends RecyclerView.ViewHolder {
+public class MatchListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     @BindView(R.id.match_image)
     ImageView match_image;
     @BindView(R.id.match_username)
@@ -21,26 +22,18 @@ public class MatchListViewHolder extends RecyclerView.ViewHolder {
     TextView match_age_location;
     @BindView(R.id.match_percentage)
     TextView match_percentage;
+    private RecyclerViewClickListener mListener;
 
-    public MatchListViewHolder(View itemView) {
+    public MatchListViewHolder(View itemView, RecyclerViewClickListener listener) {
         super(itemView);
+        mListener=listener;
         ButterKnife.bind(this, itemView);
+        itemView.setOnClickListener(this);
     }
 
-    public void bind(Match match) {
-        StringBuilder url= new StringBuilder(match.getPhoto().getThumbPaths().getLarge());
-        StringBuilder location= new StringBuilder(match.getCityName()+", "+match.getStateCode());
-        int age=match.getAge();
-        StringBuilder ageLocation=new StringBuilder(age+" \u2022 "+location.toString());
-        StringBuilder matchPercentage= new StringBuilder(getPercentage(match.getMatch())+itemView.getResources().getString(R.string.percentage_itemView));
 
-        Picasso.get().load(url.toString()).fit().centerCrop().into(match_image);
-        match_username.setText(match.getUsername());
-        match_age_location.setText( ageLocation.toString());
-        match_percentage.setText(matchPercentage);
-    }
-
-    private int getPercentage(int match) {
-        return  match/100;
+    @Override
+    public void onClick(View v) {
+        mListener.onClick(v, getAdapterPosition());
     }
 }

@@ -3,7 +3,9 @@ package com.example.franciscoandrade.okcupidchallenge.data.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable{
     @Expose
     @SerializedName("state_code")
     private String stateCode;

@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.franciscoandrade.okcupidchallenge.R;
 import com.example.franciscoandrade.okcupidchallenge.data.api.ClientService;
 import com.example.franciscoandrade.okcupidchallenge.data.api.MatchApi;
 import com.example.franciscoandrade.okcupidchallenge.data.model.MatchResponse;
@@ -35,13 +36,12 @@ public class MatchPresenter implements MatchContract.Presenter {
         matchCall.enqueue(new Callback<MatchResponse>() {
             @Override
             public void onResponse(Call<MatchResponse> call, Response<MatchResponse> response) {
-                Log.d(TAG, "onResponse: "+response);
                 viemImpl.setRecyclerView(response.body().getData());
             }
 
             @Override
             public void onFailure(Call<MatchResponse> call, Throwable t) {
-                Log.d(TAG, "onFailure: "+t.getMessage());
+                viemImpl.showMessage(resources.getString(R.string.error_no_internet));
             }
         });
     }
