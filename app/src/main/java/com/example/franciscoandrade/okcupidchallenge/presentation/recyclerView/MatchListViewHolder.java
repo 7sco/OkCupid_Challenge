@@ -22,18 +22,52 @@ public class MatchListViewHolder extends RecyclerView.ViewHolder implements View
     TextView match_age_location;
     @BindView(R.id.match_percentage)
     TextView match_percentage;
-    private RecyclerViewClickListener mListener;
+    private boolean likeState;
 
-    public MatchListViewHolder(View itemView, RecyclerViewClickListener listener) {
+
+    public MatchListViewHolder(View itemView) {
         super(itemView);
-        mListener=listener;
         ButterKnife.bind(this, itemView);
         itemView.setOnClickListener(this);
+    }
+
+    public void bind(Match match) {
+
+        String url = match.getPhoto().getThumbPaths().getLarge();
+        String percentage = getPercentage(match.getMatch()) + " " + itemView.getContext().getResources().getString(R.string.percentage_itemView);
+        String location = match.getCityName() + ", " + match.getStateCode();
+        int age = match.getAge();
+        String ageLocation = age + " \u2022 " + location;
+        likeState=match.getLiked();
+
+        Picasso.get().load(url).fit().centerCrop().into(match_image);
+        match_percentage.setText(percentage);
+        match_age_location.setText(ageLocation);
+        match_username.setText(match.getUsername());
+
+        if (match.getLiked()) {
+            itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.liked_color));
+        } else {
+            itemView.setBackgroundColor(Color.WHITE);
+        }
+
+    }
+
+    private int getPercentage(int match) {
+        return match / 100;
     }
 
 
     @Override
     public void onClick(View v) {
-        mListener.onClick(v, getAdapterPosition());
+
+        if (!likeState){
+            itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.liked_color));
+        }
+        else {
+            itemView.setBackgroundColor(Color.WHITE);
+        }
     }
+
 }
+
