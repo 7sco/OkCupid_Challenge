@@ -10,6 +10,8 @@ import com.example.franciscoandrade.okcupidchallenge.R;
 import com.example.franciscoandrade.okcupidchallenge.data.model.Match;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -31,7 +33,32 @@ public class MatchListViewHolder extends RecyclerView.ViewHolder implements View
         itemView.setOnClickListener(this);
     }
 
-    public void bind(Match match) {
+//    public void bind(Match match) {
+//
+//        String url = match.getPhoto().getThumbPaths().getLarge();
+//        String percentage = getPercentage(match.getMatch()) + " " + itemView.getContext().getResources().getString(R.string.percentage_itemView);
+//        String location = match.getCityName() + ", " + match.getStateCode();
+//        int age = match.getAge();
+//        String ageLocation = age + " \u2022 " + location;
+//        likeState=match.getLiked();
+//
+//        Picasso.get().load(url).fit().centerCrop().into(match_image);
+//        match_percentage.setText(percentage);
+//        match_age_location.setText(ageLocation);
+//        match_username.setText(match.getUsername());
+//
+////        if (match.getLiked()) {
+////            itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.liked_color));
+////        } else {
+////            itemView.setBackgroundColor(Color.WHITE);
+////        }
+//
+//    }
+
+
+    public void bind(List<Match> listMatch, int position) {
+        Match match=listMatch.get(position);
+
 
         String url = match.getPhoto().getThumbPaths().getLarge();
         String percentage = getPercentage(match.getMatch()) + " " + itemView.getContext().getResources().getString(R.string.percentage_itemView);
@@ -45,11 +72,11 @@ public class MatchListViewHolder extends RecyclerView.ViewHolder implements View
         match_age_location.setText(ageLocation);
         match_username.setText(match.getUsername());
 
-        if (match.getLiked()) {
-            itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.liked_color));
-        } else {
-            itemView.setBackgroundColor(Color.WHITE);
-        }
+//        if (match.getLiked()) {
+//            itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.liked_color));
+//        } else {
+//            itemView.setBackgroundColor(Color.WHITE);
+//        }
 
     }
 
@@ -63,10 +90,13 @@ public class MatchListViewHolder extends RecyclerView.ViewHolder implements View
 
         if (!likeState){
             itemView.setBackgroundColor(itemView.getContext().getResources().getColor(R.color.liked_color));
+            likeState=true;
         }
         else {
             itemView.setBackgroundColor(Color.WHITE);
+            likeState=false;
         }
+
     }
 
 }
