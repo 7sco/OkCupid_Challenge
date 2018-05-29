@@ -1,13 +1,10 @@
-package com.example.franciscoandrade.okcupidchallenge.presentation;
+package com.example.franciscoandrade.okcupidchallenge.presentation.presenter;
 
-import android.content.res.Resources;
 import android.support.annotation.NonNull;
-import android.util.Log;
-
-import com.example.franciscoandrade.okcupidchallenge.R;
 import com.example.franciscoandrade.okcupidchallenge.data.api.ClientService;
 import com.example.franciscoandrade.okcupidchallenge.data.api.MatchApi;
 import com.example.franciscoandrade.okcupidchallenge.data.model.MatchResponse;
+import com.example.franciscoandrade.okcupidchallenge.presentation.MatchContract;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,12 +13,12 @@ import retrofit2.Response;
 public class MatchPresenter implements MatchContract.Presenter {
 
     private static final String TAG= MatchPresenter.class.getSimpleName();
-    private MatchContract.View viemImpl;
+    private MatchContract.View viewImpl;
     private ClientService clientService;
 
     public MatchPresenter(@NonNull MatchContract.View viemImpl,
                           @NonNull ClientService clientService) {
-        this.viemImpl = viemImpl;
+        this.viewImpl = viemImpl;
         this.clientService = clientService;
     }
 
@@ -32,12 +29,12 @@ public class MatchPresenter implements MatchContract.Presenter {
         matchCall.enqueue(new Callback<MatchResponse>() {
             @Override
             public void onResponse(Call<MatchResponse> call, Response<MatchResponse> response) {
-                viemImpl.setRecyclerView(response.body().getData());
+                viewImpl.setRecyclerView(response.body().getData());
             }
 
             @Override
             public void onFailure(Call<MatchResponse> call, Throwable t) {
-                viemImpl.showMessage();
+                viewImpl.showMessage();
             }
         });
     }
