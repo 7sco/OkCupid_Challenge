@@ -1,22 +1,19 @@
-package com.example.franciscoandrade.okcupidchallenge.presentation;
+package com.example.franciscoandrade.okcupidchallenge.presentation.view;
 
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.Toast;
-
 import com.example.franciscoandrade.okcupidchallenge.R;
 import com.example.franciscoandrade.okcupidchallenge.data.api.ClientService;
 import com.example.franciscoandrade.okcupidchallenge.data.model.Match;
+import com.example.franciscoandrade.okcupidchallenge.presentation.MatchContract;
+import com.example.franciscoandrade.okcupidchallenge.presentation.presenter.MatchPresenter;
 import com.example.franciscoandrade.okcupidchallenge.presentation.recyclerView.MatchListAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

@@ -10,13 +10,7 @@ public class MatchResponse {
     @Expose
     @SerializedName("data")
     private List<Match> data;
-    @Expose
-    @SerializedName("total_matches")
-    private int totalMatches;
     public List<Match> getData() {
         return data;
-    }
-    public int getTotalMatches() {
-        return totalMatches;
     }
 }
