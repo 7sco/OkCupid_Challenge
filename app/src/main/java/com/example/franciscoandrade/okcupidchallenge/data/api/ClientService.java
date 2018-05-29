@@ -15,7 +15,7 @@ public class ClientService {
     }
 
     @NonNull
-    public MatchApi getFoodApi() {
+    public MatchApi getMatchApi() {
         return retrofit.create(MatchApi.class);
     }
 }

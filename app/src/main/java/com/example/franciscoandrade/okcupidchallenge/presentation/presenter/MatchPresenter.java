@@ -24,7 +24,7 @@ public class MatchPresenter implements MatchContract.Presenter {
 
     @Override
     public void getMatchList() {
-        MatchApi matchApi= clientService.getFoodApi();
+        MatchApi matchApi= clientService.getMatchApi();
         Call<MatchResponse> matchCall= matchApi.getFoodList();
         matchCall.enqueue(new Callback<MatchResponse>() {
             @Override
