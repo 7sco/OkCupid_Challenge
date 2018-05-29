@@ -47,8 +47,7 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("listBeforeRotation",  savedMatchList);
+    protected void onSaveInstanceState(Bundle outState) { outState.putSerializable("listBeforeRotation",  savedMatchList);
         super.onSaveInstanceState(outState);
     }
     @Override
