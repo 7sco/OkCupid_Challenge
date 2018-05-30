@@ -34,21 +34,19 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
         MatchContract.Presenter presenter = new MatchPresenter(this, clientService);
 
         if(savedInstanceState!=null){
-            savedMatchList=(ArrayList<Match>) savedInstanceState.getSerializable("listBeforeRotation");
+            savedMatchList=(ArrayList<Match>) savedInstanceState.getSerializable(getResources().getString(R.string.rotation_text));
             adapter.addMatches(savedMatchList);
             matchRv.setAdapter(adapter);
         }
         else {
             presenter.getMatchList();
         }
-
         getRotation();
-
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("listBeforeRotation",  savedMatchList);
+        outState.putSerializable(getResources().getString(R.string.rotation_text),  savedMatchList);
         super.onSaveInstanceState(outState);
     }
     @Override

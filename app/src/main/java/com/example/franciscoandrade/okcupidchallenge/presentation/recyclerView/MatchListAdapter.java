@@ -63,7 +63,7 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Matc
         public void bind(Match match, int position) {
             this.position=position;
             String imageUrl = match.getPhoto().getThumbPaths().getLarge();
-            String matchPercentage = getPercentage(match.getMatch()) + " " + itemView.getResources().getString(R.string.percentage_itemView);
+            String matchPercentage = getPercentage(match.getMatch()) + itemView.getResources().getString(R.string.percentage_itemView);
             String matchLocation = match.getCityName() + ", " + match.getStateCode();
             int matchAge = match.getAge();
             String ageWithLocation = matchAge + " \u2022 " + matchLocation;
