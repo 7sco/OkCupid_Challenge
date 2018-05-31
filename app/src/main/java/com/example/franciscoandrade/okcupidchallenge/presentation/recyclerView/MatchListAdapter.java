@@ -39,7 +39,6 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Matc
     public void addMatches(List<Match> listMatch) {
         this.listMatch.clear();
         this.listMatch.addAll(listMatch);
-        notifyDataSetChanged();
     }
 
     public class MatchListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
