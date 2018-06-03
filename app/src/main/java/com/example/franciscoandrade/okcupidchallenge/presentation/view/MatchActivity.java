@@ -65,7 +65,7 @@ public class MatchActivity extends AppCompatActivity implements MatchContract.Vi
 
     public void getRotation() {
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-            matchRv.setLayoutManager(new GridLayoutManager(this, 4));
+            matchRv.setLayoutManager(new GridLayoutManager(this, 3));
         }
     }
 }
